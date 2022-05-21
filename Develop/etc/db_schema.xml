@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+<!--/*Employee Table*/-->
+ <table name="emp_detail" resource="default" engine="innodb" comment="Employee Detail">
+   <column xsi:type="smallint" name="emp_id" padding="6" unsigned="true" nullable="false" identity="true" comment="ID"/>
+   <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="emp_id"/>
+   </constraint>
+   <column name="emp_name" nullable="false" xsi:type="text" comment="Employee Name"/>
+   <index referenceId="LOGIC_DEVELOP_EMP_NAME" indexType="fulltext">
+     <column name="emp_name"/>
+   </index>
+   <column name="emp_email" nullable="false" xsi:type="text" comment="Email" />
+   <index referenceId="LOGIC_DEVELOP_EMP_EMAIL" indexType="fulltext">
+     <column name="emp_email"/>
+   </index>
+   <column name="emp_phone" nullable="false" xsi:type="int" padding="10" default="0" identity="false" comment="Employee Phone" />
+   <column name="emp_address" nullable="true" xsi:type="text" comment="Employee Address"/>
+   <index referenceId="LOGIC_DEVELOP_EMP_ADDRESS" indexType="fulltext">
+     <column name="emp_address"/>
+   </index>
+   <column name="emp_status" padding="11" unsigned="false" nullable="false" xsi:type="int" default="1" identity="false" comment="Employee Status" />
+   <column name="created_at" nullable="false" xsi:type="datetime" comment="Created Date" default="CURRENT_TIMESTAMP"/>
+ </table>
+<!--/*Salary Table*/-->
+<table name="emp_salary" resource="default" engine="innodb" comment="Empployee Salary">
+  <column xsi:type="smallint" name="salary_id" padding="6" unsigned="true" nullable="false" identity="true" comment="Employee Salary"/>
+  <constraint xsi:type="primary" referenceId="PRIMARY">
+    <column name="salary_id" />
+  </constraint>
+  
+</table>
+</schema>
